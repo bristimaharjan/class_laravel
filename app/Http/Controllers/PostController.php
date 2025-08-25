@@ -17,7 +17,7 @@ class PostController extends Controller {
     public function edit($id){
         //edit form
     }
-    public function update($id){
+    public function update(Request $request){
         //form handling for edit form
     }
     public function destroy($id){
