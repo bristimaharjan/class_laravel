@@ -92,4 +92,17 @@ use App\Http\Controllers\PostController;
 // Route::get('/post/{$id}/edit',[PostController::class, 'edit'])->name('post.edit');
 // Route::put('/post/{$id}',[PostController::class, 'update'])->name('post.update');
 // Route::delete('/post/{$id}',[PostController::class, 'destroy'])->name('post.destroy');
-Route::resource('/posts','PostController::class');
+// Route::resource('/posts',PostController::class);
+// // Route::resource('/posts',PostController::class)->only(['index','show']);
+Route::resource('/posts',PostController::class)->except(['destroy','update']);
+//grouping post controller
+Route::controller(PostController::class)->group(function(){
+ Route::get('/post', 'index')->name('post.index');
+Route::get('/post/create','create')->name('post.create');
+Route::post('/post','store')->name('post.store');
+Route::get('/post/{$id}', 'show')->name('post.show');
+Route::get('/post/{$id}/edit', 'edit')->name('post.edit');
+Route::put('/post/{$id}', 'update')->name('post.update');
+Route::delete('/post/{$id}','destroy')->name('post.destroy');
+
+});
