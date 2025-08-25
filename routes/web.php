@@ -94,6 +94,7 @@ use App\Http\Controllers\PostController;
 // Route::delete('/post/{$id}',[PostController::class, 'destroy'])->name('post.destroy');
 // Route::resource('/posts',PostController::class);
 // // Route::resource('/posts',PostController::class)->only(['index','show']);
+//alternative for above 7 routes
 Route::resource('/posts',PostController::class)->except(['destroy','update']);
 //grouping post controller
 Route::controller(PostController::class)->group(function(){
