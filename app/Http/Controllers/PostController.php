@@ -1,8 +1,10 @@
 <?php
-namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
 class PostController extends Controller {
     public function index(){
+        return"testing post";
         //display list of resources 
     }
     public function create (){

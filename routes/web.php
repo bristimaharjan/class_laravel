@@ -1,50 +1,71 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
-// Route::get('/', function () {
-//     return view('welcome');
+// // Route::get('/', function () {
+// //     return view('welcome');
+// // });
+// //  Route::get('/about',function(){
+// //         return view('about');
+// //  });
+// // //http verbs
+// // //get,post,put/patch,delete,any,match
+// // // Route::get('/user',function(){
+// // //         return 'User Access';
+// // //  });
+// // //  Route::post('/user',function(){
+// // //         return 'User Created';
+// // //  });
+// //  Route::match(['get','post'],'/user',function(){
+// //     return 'User Access';
+// //  });
+// //  Route::put('/user/{id}',function($id){
+// //         return "User with ID {$id} updated";
+// //  });
+// //   Route::patch('/user/{id}',function($id){
+// //         return "User with ID {$id}  partially updated";
+// //  });
+// //   Route::delete('/user/{id}',function($id){
+// //         return "User with ID {$id} updated";
+// //  });
+// //   Route::any('/anything}',function($id){
+// //         return "Matched any Http method ";
+// //  });
+// //  Route::get('/user/{id?}',function($id=null){
+// //         return "User with ID{$id}";
+// //  });
+// //   Route::get('/user/{id?}/{name?}',function($id=null,$name=null){
+// //         return "User with ID{$id} and name={$name}";
+// //  });
+// //  //named parameter
+// // Route::get('/user/{id}',function($id){
+// //         return "User with ID {$id} ";
+// //  }) ->name('user.show');
+// // //grouping
+// // Route::prefix('admin') -> group (function() {
+// //    // route paramater
+// //     Route::get('/dashboard', function () {
+// //     return "Admin dashboard";
+// //     });
+
+// //     Route::get('/setting', function () {
+// //     return "Admin settings";
+// //     });
+// // });
+// ///middleware
+// Route::middleware(['auth'])->group(function(){
+//        Route::get('/profile',function(){
+//         return 'User profile ';
+//  });
+//   Route::get('/setting', function () {
+//   return 'User settings';
+//    });
+
 // });
-//  Route::get('/about',function(){
-//         return view('about');
-//  });
-// //http verbs
-// //get,post,put/patch,delete,any,match
-// // Route::get('/user',function(){
-// //         return 'User Access';
-// //  });
-// //  Route::post('/user',function(){
-// //         return 'User Created';
-// //  });
-//  Route::match(['get','post'],'/user',function(){
-//     return 'User Access';
-//  });
-//  Route::put('/user/{id}',function($id){
-//         return "User with ID {$id} updated";
-//  });
-//   Route::patch('/user/{id}',function($id){
-//         return "User with ID {$id}  partially updated";
-//  });
-//   Route::delete('/user/{id}',function($id){
-//         return "User with ID {$id} updated";
-//  });
-//   Route::any('/anything}',function($id){
-//         return "Matched any Http method ";
-//  });
-//  Route::get('/user/{id?}',function($id=null){
-//         return "User with ID{$id}";
-//  });
-//   Route::get('/user/{id?}/{name?}',function($id=null,$name=null){
-//         return "User with ID{$id} and name={$name}";
-//  });
-//  //named parameter
-// Route::get('/user/{id}',function($id){
-//         return "User with ID {$id} ";
-//  }) ->name('user.show');
-// //grouping
-// Route::prefix('admin') -> group (function() {
-//    // route paramater
-//     Route::get('/dashboard', function () {
+// //combine
+// Route::prefix('admin')->middleware(['auth'])->group(function(){
+// Route::get('/dashboard', function () {
 //     return "Admin dashboard";
 //     });
 
@@ -52,35 +73,16 @@ use Illuminate\Support\Facades\Route;
 //     return "Admin settings";
 //     });
 // });
-///middleware
-Route::middleware(['auth'])->group(function(){
-       Route::get('/profile',function(){
-        return 'User profile ';
- });
-  Route::get('/setting', function () {
-  return 'User settings';
-   });
 
-});
-//combine
-Route::prefix('admin')->middleware(['auth'])->group(function(){
-Route::get('/dashboard', function () {
-    return "Admin dashboard";
-    });
-
-    Route::get('/setting', function () {
-    return "Admin settings";
-    });
-});
-
-//Constraint
-Route::get('/user/{id}',function($id){
-        return "User with ID {$id} ";
- }) ->where('id','[0-9]+');
- Route::get('/post/{slug}',function($slug){
-        return "Post with slug {$slug} ";
- }) ->where('slug','[a-zA-Z0-9-]+');
- //fallback
+// //Constraint
+// Route::get('/user/{id}',function($id){
+//         return "User with ID {$id} ";
+//  }) ->where('id','[0-9]+');
+//  Route::get('/post/{slug}',function($slug){
+//         return "Post with slug {$slug} ";
+//  }) ->where('slug','[a-zA-Z0-9-]+');
+//  //fallback
  Route::fallback(function(){
        return view('errors.404');
  });
+Route::get('/post',[PostController::class, 'index'])->name('post.index');
