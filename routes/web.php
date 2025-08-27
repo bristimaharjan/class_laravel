@@ -96,7 +96,7 @@ use App\Http\Controllers\PostController;
 // // Route::resource('/posts',PostController::class)->only(['index','show']);
 //alternative for above 7 routes
 Route::resource('/posts',PostController::class)->except(['destroy','update']);
-//grouping post controller
+//grouping post 
 Route::controller(PostController::class)->group(function(){
  Route::get('/post', 'index')->name('post.index');
 Route::get('/post/create','create')->name('post.create');
