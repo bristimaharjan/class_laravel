@@ -11,8 +11,7 @@ class Tag extends Model
      protected $table ='tags';
      protected $fillable = [
         'name',
-        'id',
-        'slug',
+        'slug'
     ];
 
 }
