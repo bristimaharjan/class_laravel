@@ -13,7 +13,7 @@
 <form  class = "space-y-4" action=" " method="post">
     @csrf
     <textarea  class="border border-gray-300 rounded-md p-2 w-full" name="content" rows="3" placeholder="What's happening" id=""></textarea>
-    <button type="submit" class="bg-blue-500 text-white  rounded-md  px-4 py-2 ">Chirps</button>
+    <button type="submit" class="bg-blue-500 text-white  rounded-md  px-4 py-2 ">Submit</button>
 </form>
 </div>
     
