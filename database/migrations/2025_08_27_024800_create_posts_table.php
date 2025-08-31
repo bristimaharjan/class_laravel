@@ -15,12 +15,12 @@ return new class extends Migration
     $table->bigIncrements('id');
     $table->string('title');
     $table->text('content')->nullable();
-    $table->unsignedBigInteger('user_id'); // Foreign key to users table
+    // $table->unsignedBigInteger('user_id'); // Foreign key to users table
     $table->string('slug')->unique()->nullable();
     $table->timestamps();
 
     // Optional: Add foreign key constraint
-    $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+    // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 });
     }
 

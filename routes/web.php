@@ -108,3 +108,4 @@ Route::get('/', function () {
 
 // });
 Route::get('/chirps',[PostController::class,'index'])->name('chirps.index');
+Route::post('/chirps',[PostController::class,'store'])->name('chirps.store');
