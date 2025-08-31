@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -28,7 +29,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+        $request->validate([
+            'content'=>'required|string|max:255',
+        ]);
+         Post::create($request->only('content'));
+         return redirect()->route('chirps.index');
+        // dd($request);
+
     }
 
     /**

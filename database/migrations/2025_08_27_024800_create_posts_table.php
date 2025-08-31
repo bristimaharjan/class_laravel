@@ -13,7 +13,7 @@ return new class extends Migration
     {
       Schema::create('posts', function (Blueprint $table) {
     $table->bigIncrements('id');
-    $table->string('title');
+    $table->string('title')->nullable();
     $table->text('content')->nullable();
     // $table->unsignedBigInteger('user_id'); // Foreign key to users table
     $table->string('slug')->unique()->nullable();
