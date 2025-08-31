@@ -16,7 +16,7 @@ return new class extends Migration
     $table->string('title');
     $table->text('content')->nullable();
     $table->unsignedBigInteger('user_id'); // Foreign key to users table
-    $table->string('slug');
+    $table->string('slug')->unique()->nullable();
     $table->timestamps();
 
     // Optional: Add foreign key constraint

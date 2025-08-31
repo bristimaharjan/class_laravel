@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
-// // Route::get('/', function () {
-// //     return view('welcome');
-// // });
+Route::get('/', function () {
+    return view('welcome');
+});
 // //  Route::get('/about',function(){
 // //         return view('about');
 // //  });
@@ -95,15 +95,16 @@ use App\Http\Controllers\PostController;
 // Route::resource('/posts',PostController::class);
 // // Route::resource('/posts',PostController::class)->only(['index','show']);
 //alternative for above 7 routes
-Route::resource('/posts',PostController::class)->except(['destroy','update']);
-//grouping post 
-Route::controller(PostController::class)->group(function(){
- Route::get('/post', 'index')->name('post.index');
-Route::get('/post/create','create')->name('post.create');
-Route::post('/post','store')->name('post.store');
-Route::get('/post/{$id}', 'show')->name('post.show');
-Route::get('/post/{$id}/edit', 'edit')->name('post.edit');
-Route::put('/post/{$id}', 'update')->name('post.update');
-Route::delete('/post/{$id}','destroy')->name('post.destroy');
+// Route::resource('/posts',PostController::class)->except(['destroy','update']);
+// //grouping post 
+// Route::controller(PostController::class)->group(function(){
+//  Route::get('/post', 'index')->name('post.index');
+// Route::get('/post/create','create')->name('post.create');
+// Route::post('/post','store')->name('post.store');
+// Route::get('/post/{$id}', 'show')->name('post.show');
+// Route::get('/post/{$id}/edit', 'edit')->name('post.edit');
+// Route::put('/post/{$id}', 'update')->name('post.update');
+// Route::delete('/post/{$id}','destroy')->name('post.destroy');
 
-});
+// });
+Route::get('/chirps',[PostController::class,'index'])->name('chirps.index');

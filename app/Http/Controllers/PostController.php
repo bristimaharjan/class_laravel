@@ -11,7 +11,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return "testingdone";
+        return view ('chirps.index');
         //
     }
 
